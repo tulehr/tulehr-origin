@@ -1,0 +1,330 @@
+{% extends "library/base.html" %}
+{% load staticfiles %}
+{% block div_content %}
+<form id="formNuevoPerfil" role="form" action="/recruitmen/prospect/new/" method="post">
+            <!-- /.row -->
+            <div class="row">
+                        <div class="panel-heading">
+                            HOJA DE TRAYECTORIA
+                        </div>
+                <div class="col-lg-12">
+                
+<div class="row">
+	<div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Foto <button type="button" class="btn btn-info">Modificar</button>
+                        </div>
+                        <div class="panel-body">	
+                        	<img src="{% static 'img/perfil.png' %}" width="180" height="230"/>
+                        </div>
+                        </div>
+	</div>
+	<div class="col-lg-9">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos del Solicitante
+                        </div>
+                        <div class="panel-body">
+                        {% csrf_token %}
+                        <form role="form">
+                            <div class="row">
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Nombre:</label>
+                                            <input id="name" name="name" class="form-control">
+                                        </div>
+                                 </div>
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Apellido Paterno:</label>
+                                            <input id="first_name" name="first_name" class="form-control">
+                                        </div>
+                                 </div>
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Apellido Materno:</label>
+                                            <input id="second_name" name="second_name" class="form-control">
+                                        </div>
+                                 </div>                        
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Trayectoria profesional</label>
+                                            <textarea id="summary" name="summary" class="form-control" rows="5"></textarea>
+                                        </div>
+                            	</div>
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+	</div>
+</div>
+
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Postulacion Interna
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+                                            <select id="profile_company_contractor" name="profile_company_contractor" class="form-control">
+                                            	{% for customerCompany in CustomerCompanyList %}
+                                            	<label class="checkbox-inline">
+                                                	<option id="customerCompany{{ forloop.counter }}" value="{{ customerCompany.id }}">{{ customerCompany.comercial_name }}</option>
+                                            	</label>
+                                            	{% endfor %}
+                                            </select>
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input type="date" id="search_start_date" name="search_start_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input type="date" id="commitment_date" name="commitment_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto Solicitado:</label>
+                                            <select id="position" name="position" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.id }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select id="work_area" name="work_area" class="form-control">
+                                            {% for workArea in WorkAreaList %}
+                                                <option id="workArea{{ forloop.counter }}" value="{{ workArea.id }}">{{ workArea.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                    </div>
+                                 </div>                      
+                            </div>                                        
+                    </form>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Postulacion Externa
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Experiencia
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+											<input class="form-control" placeholder="Escriba el nombre de la empresa">
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input type="date" id="work_start_date" name="work_start_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input type="date" id="work_end_date" name="work_end_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto:</label>
+                                            <select id="work_position" name="work_position" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.id }}">{{ position.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select id="work_area2" name="work_area2" class="form-control">
+                                            {% for workArea in WorkAreaList %}
+                                                <option id="workArea{{ forloop.counter }}" value="{{ workArea.id }}">{{ workArea.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                    </div>
+                                 </div>                      
+                            </div>   
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Sueldo:</label>
+                                            <input id="position_salary" name="position_salary" class="form-control" required>
+                                        </div>
+                            	</div>
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Tipo de Sueldo:</label>
+                                            <br/>
+                                            <label class="radio-inline">
+                                                <input id="id_Neto" name="position_salary_total" value="False" type="radio" required>Neto
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="id_Bruto" name="position_salary_total" value="True" type="radio" required>Bruto
+                                            </label>
+                                        </div>
+                            	</div>  
+                            </div>         
+                        </div>
+                   </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Preparacion Academica
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                        
+				<div class="row">
+								<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Diciplina academica</label>
+                                            <select id="possible_degree" name="possible_degree" class="form-control" required>
+												{% for degree in DegreeList %}
+                                                	<option id="degree{{ forloop.counter }}" value="{{ degree.id }}">{{ degree.name}}</option>
+                                            	{% endfor %}
+                                            </select>
+                                        </div>
+                                </div>  
+                               <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Universidad:</label>
+                                            <select id="college" name="college" class="form-control" required>
+												{% for school in SchoolList %}
+                                                	<option id="school{{ forloop.counter }}" value="{{ school.id }}">{{ school.description}}</option>
+                                            	{% endfor %}
+                                            </select>
+                                    </div>
+                                </div>     
+                    </div>
+                            <div class="row">
+                            	<div class="col-lg-10">
+                                         <div class="form-group">
+                                            <label>Otros Estudios:</label>
+                                            <input class="form-control">
+                                        </div>
+                            	</div>
+                           </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input type="date" id="start_date" name="search_start_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input type="date" id="end_date" name="end_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>                           
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos Personales
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Edad:</label>
+											<input class="form-control" placeholder="">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha de Nacimiento:</label>
+											<input type="date" id="birthdate" name="birthdate" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>                           
+                            </div>
+							<div class="row">
+								<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Estado civil</label>
+                                            <select id="civil_status" name="civil_status" class="form-control">
+                                                {% for civilStatus in CivilStatuslList %}
+                                                	<option id="civilStatus{{ forloop.counter }}" value="{{ civilStatus.id }}">{{ civilStatus.description}}</option>
+                                            	{% endfor %}
+                                            </select>
+                                        </div>
+                                </div>  
+                               <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Lugar de recidencia:</label>
+                                            <select class="form-control">
+                                                <option>Ciudad de Mexico</option>
+                                                <option>Estado de Mexico</option>
+                                                <option>Puebla</option>
+                                                <option>Tlaxcala</option>
+                                            </select>
+                                    </div>
+                                </div>     
+                    	</div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Numero de Hijos:</label>
+											<input id="number_of_children" name="number_of_children" class="form-control">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Numero de Dependientes:</label>
+											<input id="number_of_dependents" name="number_of_dependents" class="form-control">                                 </div>                           
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Telefono:</label>
+											<input id="personal_home_phone" name="personal_home_phone" class="form-control">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Celular:</label>
+											<input id="personal_cellphone" name="personal_cellphone" class="form-control">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Correo Electronico Principal:</label>
+											<input id="personal_email" name="personal_email" class="form-control">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Correo Electronico Opcional:</label>
+											<input id="company_emal" name="company_emal" class="form-control">
+                                 </div>                           
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+
+      </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-lg-6">
+                    			<button type="submit" class="btn btn-primary" id="GuardarProsp" >Guardar cambios</button>
+                    			<br/>
+                            </div>
+                     </div>
+                      <div class="row">
+                      	<br/>
+                      </div>       
+</form>
+{% endblock %}

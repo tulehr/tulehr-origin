@@ -1,0 +1,137 @@
+{% extends "library/base.html" %}
+
+{% block div_content %}
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>Listado de Requisiciones</h3>                
+                <div class="row">
+	                <div class="col-lg-12">
+	                    <div class="panel panel-primary">
+	                        <div class="panel-heading">
+	                            Busqueda de Requisiciones
+	                        </div>
+	                        <div class="panel-body">
+		                        <form role="form">
+		                            <div class="input-group custom-search-form">
+		                                <input type="text" class="form-control" placeholder="Search...">
+		                                <span class="input-group-btn">
+		                                <button class="btn btn-default" type="button" onclick="location.href='/recruitmen/prospect/search/';" >
+		                                    <i class="fa fa-search"></i>
+		                                </button>
+		                            </span>
+		                            </div>
+		                        </form>
+	                        </div>
+	                   </div>
+	               </div>
+               </div>
+                
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+	                    <div class="panel-heading">
+							Listado de Requisiciones
+	                    </div>
+                        <div class="panel-body">
+                        	<button type="submit" class="btn btn-primary" onclick="location.href='/recruitmen/requisition/new/';" >Nueva Requisicion</button>
+                            <p>La siguiente tabla muestra todas las requisiciones dadas de alta, puedes utilizar el filtro de la parte superior para buscar una requisicion en especifico.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="tableRequisition">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                            	Seleccionar
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                Puesto Solicitado
+                                            </th>
+                                            <th>
+                                                Solicitante
+                                            </th>
+                                            <th>
+                                                Empresa
+                                            </th>
+                                            <th>
+                                                Area
+                                            </th>
+                                            <th>
+                                                Estatus
+                                            </th>
+                                            <th>
+                                                Fecha de Alta
+                                            </th>
+                                            <th>
+                                                Actualizar
+                                            </th>
+                                            <th>
+                                                Cancelar
+                                            </th>
+                                            <th>
+                                                Seguimiento
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{% if requisition_list %}
+									    {% for requisition in requisition_list %}
+									    	<tr>
+                                            <td><input type="checkbox" id="{{ requisition.id }}" name="requisition_{{ requisition.id }}" > </td>
+                                            <td>{{ requisition.name }}</td>
+                                            <td>{{ requisition.position_to_search.description}}</td>
+                                            <td>{{ requisition.requisition_requested_by.name }} {{ requisition.requisition_requested_by.first_name }} {{ requisition.requisition_requested_by.second_name }}</td>
+                                            <td>{{ requisition.company_destination.comercial_name }}</td>
+                                            <td>{{ requisition.work_area.description }}</td>
+                                            <td>{{ requisition.logical_status }}</td>
+                                            <td>{{ requisition.insert_date }}</td>
+                                            <td><a href="{% url 'recruitmen:requisition_update' requisition.id %}">Actualizar</a></td>
+                                            <td><a href="{% url 'recruitmen:requisition_cancel' requisition.id %}" >Cancelar</a></td>
+                                            <td><a href="{% url 'recruitmen:requisition_timeline' requisition.id %}" >Seguimiento</a></td>
+                                            </tr>
+										    {% endfor %}
+										{% else %}
+										    <tr>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+										    </tr>
+									{% endif %}
+				                  </tbody>
+                                </table>
+                            </div>
+                        	
+                        	
+                        </div>
+                    </div>
+                </div>
+                </div>
+                            
+                            
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+{% endblock %}
+<script>
+    $(document).ready(function() {
+        $('#tableRequisition').DataTable({
+            responsive: true
+        });
+    });
+</script>

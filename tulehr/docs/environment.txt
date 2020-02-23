@@ -1,0 +1,245 @@
+http://djangotutorial.readthedocs.io/es/1.8/intro/tutorial02.html
+
+# Creacion de un proyecto en Django con virtualenv *****************
+pip install virtualenv
+mkvirtualenv reclutamiento-seleccion
+workon reclutamiento-seleccion
+
+#####################################################################
+## Instalar Django                                                  #
+#####################################################################
+pip install django
+#####################################################################
+
+
+cd C:\projects\openstack\
+django-admin startproject tulehr-origin
+
+
+#Insalar el modulo de c++ para python
+https://www.microsoft.com/en-us/download/details.aspx?id=44266
+Instalar el conector de MySQL
+#Instalar el modulo de MySQL
+#####################################################################
+## Instalar el conector de MySQL                                    #
+#####################################################################
+pip install MySQL-python
+#####################################################################
+
+Para crear una app en python:
+python manage.py startapp recruitmen
+
+#*******************************************************************
+
+Para crear una app en python:
+python manage.py startapp nombreApp
+
+
+#####################################################################
+## Activar los modelos y migraciones del modelo                     #
+#####################################################################
+# Activamos los modelos
+python manage.py makemigrations portal
+# Para ver el SQL que el sistema va a migrar
+python manage.py sqlmigrate portal 0001
+# Validar problemas en el proyecto
+python manage.py check
+# Migrar las tablas del esquema a la base de datos:
+python manage.py migrate
+#####################################################################
+
+
+
+# Eliminar los datos de la base de datos
+python manage.py flush
+
+# Crear el usuario de administracion del sitio
+ python manage.py createsuperuser
+ 
+ # Para ejecutar el web server
+ python manage.py runserver
+ 
+ # URL del sitio de administracion
+ http://127.0.0.1:8000/admin/
+
+
+
+####### Resetear las migraciones ################
+  python manage.py showmigrations
+  python manage.py migrate --fake portal zero
+  python manage.py migrate --fake-initial
+  --Borrar las tablas del modelo
+  python manage.py sqlflush | python manage.py dbshell
+  #Borrar el contenido de los archivos generados en la carpeta de migrations
+#################################################
+
+
+#####################################################################
+## Instalar PILOW para el manejo de imagener                        #
+#####################################################################
+pip install pillow
+#####################################################################
+ 
+ 
+ #####################################################################
+ ## Instalar Simple Log                                              #
+ #####################################################################
+ # Doc: https://github.com/kindlycat/django-simple-log/
+ 
+ pip install django-simple-log
+ 
+ Add to instaled APPS
+ INSTALLED_APPS = (
+    ...
+    'simple_log',
+    ...
+)
+
+Add to Middleware
+MIDDLEWARE = [
+    ...
+    'simple_log.middleware.ThreadLocalMiddleware',
+    ...
+]
+
+Instalar 
+pip install django-jsonfield django-transaction-hooks
+
+python manage.py migrate
+
+#####################################################################
+ 
+ 
+#####################################################################
+## Instalar psutils para consultas de sistema                        #
+######################################################################
+sudo pip install psutil
+#####################################################################
+
+
+
+#####################################################################
+## Instalar south - Manejo de esquemas y migracion de datos
+## https://south.readthedocs.io/en/latest/
+###################################################################### 
+ 
+pip install South
+
+#####################################################################
+
+
+#####################################################################
+## Mongo en Django, validar la compatibilidad.
+## https://django-mongodb-engine.readthedocs.io/en/latest/topics/setup.html
+######################################################################
+
+
+#####################################################################
+
+
+#####################################################################
+## Mongo de colas en tiempo real - Revisar y probar funsionamiento
+## http://www.celeryproject.org/
+######################################################################
+
+
+#####################################################################
+
+
+#####################################################################
+## Manejo de SSH desde Python
+## http://www.paramiko.org/installing.html
+######################################################################
+pip install paramiko
+
+#####################################################################
+
+#####################################################################
+## Manejo de SSH desde Python
+######################################################################
+pip install lxml
+
+#####################################################################
+
+
+#####################################################################
+## Manejo de Web Services
+######################################################################
+pip install suds
+#####################################################################
+
+
+
+ Cargar el entorno virtual del projecto
+ virtualenv --version
+ lsvirtualenv
+ workon myproject
+ 
+ Cargar el proyecto de django
+ Para poder acceder a la shell, abrimos una terminal o ventana de comandos, y nos ubicamos en la carpeta de 
+ proyecto (en donde se encuentre el archivo manage.py) y digitamos:
+ python manage.py shell
+ 
+ 
+ #####################################################################
+## Crear un ambiente para Python en modo productivo
+## https://github.com/certsocietegenerale/FIR
+######################################################################
+Prerequisitos:
+sudo apt-get update
+sudo apt-get install mysql-server libmysqlclient-dev gettext python-dev python-pip python-lxml git libxml2-dev libxslt1-dev libz-dev nginx
+
+Configurar MySQL
+mysql -uroot -p
+CREATE DATABASE kiocmp;
+CREATE USER 'kiocmp'@'localhost' IDENTIFIED BY 'temporal1';
+GRANT USAGE ON *.* TO 'kiocmp'@'localhost';
+GRANT ALL PRIVILEGES ON `kiocmp`.* TO 'kiocmp'@'localhost';
+
+Configurar virtual environment
+sudo pip install virtualenv
+virtualenv kiocmp
+source kiocmp/bin/activate
+
+##Instalar las dependencias utilizadas
+pip install django
+pip install MySQL-python
+pip install paramiko
+pip install pillow
+sudo pip install psutil
+pip install django-simple-log
+pip install django-jsonfield django-transaction-hooks
+pip install djangorestframework
+pip install boto3
+pip install openstacksdk
+sudo pip install azure-mgmt-compute
+pip install --upgrade google-api-python-client
+pip install django gunicorn psycopg2
+pip install lxml
+pip install suds
+
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+mysql --host=localhost --user=kiocmp --password=temporal1 kiocmp
+show tables
+
+
+#####################################################################
+ 
+ 
+ 
+ Componentes Bootstrap externos:
+ https://github.com/rabihkodeih/bootstrap-transfer/blob/master/screenshots/screenshot.PNG
+ https://github.com/davidstutz/bootstrap-multiselect
+ 
+ 
+ 
+ Ejemplos de BootStrap***
+ https://bootsnipp.com/snippets/featured/profile-card
+ 
+ 
+ 
+ 

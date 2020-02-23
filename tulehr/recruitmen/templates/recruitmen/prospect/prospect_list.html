@@ -1,0 +1,143 @@
+{% extends "library/base.html" %}
+
+{% block div_content %}
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>Listado de Prospectos</h3>
+                
+                <div class="row">
+	                <div class="col-lg-12">
+	                    <div class="panel panel-primary">
+	                        <div class="panel-heading">
+	                            Busqueda de Prospectos
+	                        </div>
+	                        <div class="panel-body">
+		                        <form role="form">
+		                            <div class="input-group custom-search-form">
+		                                <input type="text" class="form-control" placeholder="Search...">
+		                                <span class="input-group-btn">
+		                                <button class="btn btn-default" type="button" onclick="location.href='/recruitmen/prospect/search/';" >
+		                                    <i class="fa fa-search"></i>
+		                                </button>
+		                            </span>
+		                            </div>
+		                        </form>
+	                        </div>
+	                   </div>
+	               </div>
+               </div>
+                
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+	                    <div class="panel-heading">
+	                            Listado de Prospectos
+	                    </div>
+                        <div class="panel-body">
+                            <button type="submit" class="btn btn-primary" onclick="location.href='/recruitmen/prospect/new/';" >Nuevo Prospecto</button>
+                            <p>La siguiente tabla muestra todos los prospectos dados de alta, puedes utilizar el filtro de la parte superior para buscar una prospecto en especifico.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="tableProspect">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                            	Seleccionar
+                                            </th>
+                                            <th>
+                                                Nombre completo
+                                            </th>
+                                            <th>
+                                                Titular
+                                            </th>
+                                            <th>
+                                                Universidad
+                                            </th>
+                                            <th>
+                                                Estatus
+                                            </th>
+                                            <th>
+                                                Fecha de Alta
+                                            </th>
+                                            <th>
+                                                Acciones
+                                            </th>
+                                            <th>
+                                                Seguimiento
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{% if prospect_list %}
+									    {% for prospect in prospect_list %}
+									    	<tr>
+                                            <td><input type="checkbox" id="{{ prospect.id }}" name="prospect_{{ prospect.id }}" > </td>
+                                            <td>{{ prospect.name }} {{ prospect.first_name }} {{ prospect.second_name }}</td>
+                                            <td>{{ prospect.work_title }}</td>
+                                            <td>{{ prospect.college.description }}</td>
+                                            <td>{{ prospect.logical_status }}</td>
+                                            <td>{{ prospect.insert_date }}</td>
+                                            <td><a href="{% url 'recruitmen:prospect_update' prospect.id %}">Actualizar</a></td>
+                                            <td><a href="{% url 'recruitmen:prospect_delete' prospect.id %}" >Eliminar</a></td>
+                                            <td>                                            
+					                            <div class="pull-right">
+					                                <div class="btn-group">
+					                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+					                                        Actions
+					                                        <span class="caret"></span>
+					                                    </button>
+					                                    <ul class="dropdown-menu pull-right" role="menu">
+					                                        <li><a href="#">Action</a>
+					                                        </li>
+					                                        <li><a href="#">Another action</a>
+					                                        </li>
+					                                        <li><a href="#">Something else here</a>
+					                                        </li>
+					                                        <li class="divider"></li>
+					                                        <li><a href="#">Separated link</a>
+					                                        </li>
+					                                    </ul>
+					                                </div>
+					                            </div>
+                                            </td>
+                                            <td><a href="/recruitmen/requisition/timeline/" >Seguimiento</a></td>
+                                            </tr>
+										    {% endfor %}
+										{% else %}
+										    <tr>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+										    </tr>
+									{% endif %}
+				                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+{% endblock %}
+<script>
+    $(document).ready(function() {
+        $('#tableProspect').DataTable({
+            responsive: true
+        });
+    });
+</script>

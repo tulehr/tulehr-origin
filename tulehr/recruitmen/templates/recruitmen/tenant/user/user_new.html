@@ -1,0 +1,480 @@
+{% extends "library/base.html" %}
+{% load staticfiles %}
+{% block div_content %}
+            <!-- /.row -->
+            <div class="row">
+                        <div class="panel-heading">
+                            HOJA DE TRAYECTORIA
+                        </div>
+                <div class="col-lg-12">
+                
+<div class="row">
+	<div class="col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Foto <button type="button" class="btn btn-info">Modificar</button>
+                        </div>
+                        <div class="panel-body">	
+                        	<img src="{% static 'img/perfil.png' %}" width="180" height="230"/>
+                        </div>
+                        </div>
+	</div>
+	<div class="col-lg-9">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos del Solicitante
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Nombre:</label>
+                                            <input class="form-control">
+                                        </div>
+                                 </div>
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Apellido Paterno:</label>
+                                            <input class="form-control">
+                                        </div>
+                                 </div>
+                            	<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Apellido Materno:</label>
+                                            <input class="form-control">
+                                        </div>
+                                 </div>                        
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Trayectoria profesional</label>
+                                            <textarea class="form-control" rows="5"></textarea>
+                                        </div>
+                            	</div>
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+	</div>
+</div>
+
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Postulacion Interna
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+                                            <select class="form-control">
+                                                <option>Grupo Elektra</option>
+                                                <option>TV Azteca</option>
+                                                <option>Grupo Salinas</option>
+                                                <option>Circulo de Credito</option>
+                                                <option>ITALIKA</option>
+                                                <option>I LATINA</option>
+                                            </select> 
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto Solicitado:</label>
+                                            <select class="form-control">
+                                                <option>1 - Director de Sistemas</option>
+                                                <option>2 - Director de Finanzas</option>
+                                                <option>3 - Director Comercial</option>
+                                                <option>4 - Director de Telecomunicaciones</option>
+                                                <option>5 - Director de Medios</option>
+                                            </select>
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select class="form-control">
+                                                <option>Administracion</option>
+                                                <option>Sistemas</option>
+                                                <option>Recursos Humanos</option>
+                                                <option>Finanzas</option>
+                                            </select>
+                                    </div>
+                                 </div>                      
+                            </div>                                        
+                    </form>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Postulacion Externa
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Experiencia
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+											<input class="form-control" placeholder="Escriba el nombre de la empresa">
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto:</label>
+                                            <select class="form-control">
+                                                <option>1 - Director de Sistemas</option>
+                                                <option>2 - Director de Finanzas</option>
+                                                <option>3 - Director Comercial</option>
+                                                <option>4 - Director de Telecomunicaciones</option>
+                                                <option>5 - Director de Medios</option>
+                                            </select>
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select class="form-control">
+                                                <option>Administracion</option>
+                                                <option>Sistemas</option>
+                                                <option>Recursos Humanos</option>
+                                                <option>Finanzas</option>
+                                            </select>
+                                    </div>
+                                 </div>                      
+                            </div>   
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Sueldo:</label>
+                                            <input class="form-control">
+                                        </div>
+                            	</div>
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Tipo de Sueldo</label>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Neto
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Bruto
+                                                </label>
+                                            </div>
+                                        </div>
+                            	</div>  
+                            </div>         
+                        </div>
+                   </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Experiencia
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+											<input class="form-control" placeholder="Escriba el nombre de la empresa">
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto:</label>
+                                            <select class="form-control">
+                                                <option>1 - Director de Sistemas</option>
+                                                <option>2 - Director de Finanzas</option>
+                                                <option>3 - Director Comercial</option>
+                                                <option>4 - Director de Telecomunicaciones</option>
+                                                <option>5 - Director de Medios</option>
+                                            </select>
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select class="form-control">
+                                                <option>Administracion</option>
+                                                <option>Sistemas</option>
+                                                <option>Recursos Humanos</option>
+                                                <option>Finanzas</option>
+                                            </select>
+                                    </div>
+                                 </div>                      
+                            </div>   
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Sueldo:</label>
+                                            <input class="form-control">
+                                        </div>
+                            	</div>
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Tipo de Sueldo</label>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Neto
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Bruto
+                                                </label>
+                                            </div>
+                                        </div>
+                            	</div>  
+                            </div>         
+                        </div>
+                   </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Experiencia
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre de la Empresa:</label>
+											<input class="form-control" placeholder="Escriba el nombre de la empresa">
+                            		</div>
+                                 </div>                      
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto:</label>
+                                            <select class="form-control">
+                                                <option>1 - Director de Sistemas</option>
+                                                <option>2 - Director de Finanzas</option>
+                                                <option>3 - Director Comercial</option>
+                                                <option>4 - Director de Telecomunicaciones</option>
+                                                <option>5 - Director de Medios</option>
+                                            </select>
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Area de dentro de la empresa:</label>
+                                            <select class="form-control">
+                                                <option>Administracion</option>
+                                                <option>Sistemas</option>
+                                                <option>Recursos Humanos</option>
+                                                <option>Finanzas</option>
+                                            </select>
+                                    </div>
+                                 </div>                      
+                            </div>   
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Sueldo:</label>
+                                            <input class="form-control">
+                                        </div>
+                            	</div>
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Tipo de Sueldo</label>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Neto
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Bruto
+                                                </label>
+                                            </div>
+                                        </div>
+                            	</div>  
+                            </div>         
+                        </div>
+                   </div>                          
+                    </form>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Preparacion Academica
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                        
+				<div class="row">
+								<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Multiple Selects</label>
+                                            <select class="form-control">
+                                                <option>1 - Ingenieria en Sistemas Computacionales</option>
+                                                <option>2 - Licenciatura en Informatica</option>
+                                                <option>3 - Actuaria con especialidad en Computacion</option>
+                                                <option>4 - Ingenieria en Matematicas</option>
+                                                <option>5 - Ingeniaria en Telematica</option>
+                                            </select>
+                                        </div>
+                                </div>  
+                               <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Universidad:</label>
+                                            <select class="form-control">
+                                                <option>Universidad Nacional Autonoma e Mexico</option>
+                                                <option>Tecnologico de Monterrey</option>
+                                                <option>Instituto Politecnico Nacional</option>
+                                            </select>
+                                    </div>
+                                </div>     
+                    </div>
+                            <div class="row">
+                            	<div class="col-lg-10">
+                                         <div class="form-group">
+                                            <label>Otros Estudios:</label>
+                                            <input class="form-control">
+                                        </div>
+                            	</div>
+                           </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha fin:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos Personales
+                        </div>
+                        <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Edad:</label>
+											<input class="form-control" placeholder="">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha de Nacimiento:</label>
+											<input class="form-control" placeholder="DD/MM/YYYY">
+                                 </div>                           
+                            </div>
+							<div class="row">
+								<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Estado civil</label>
+                                            <select class="form-control">
+                                                <option>1 - Soltero</option>
+                                                <option>2 - Casado</option>
+                                            </select>
+                                        </div>
+                                </div>  
+                               <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <label>Lugar de recidencia:</label>
+                                            <select class="form-control">
+                                                <option>Ciudad de Mexico</option>
+                                                <option>Estado de Mexico</option>
+                                                <option>Puebla</option>
+                                                <option>Tlaxcala</option>
+                                            </select>
+                                    </div>
+                                </div>     
+                    	</div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Numero de Hijos:</label>
+											<input class="form-control" placeholder="">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Numero de Dependientes:</label>
+											<input class="form-control" placeholder="">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Telefono:</label>
+											<input class="form-control" placeholder="">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Celular:</label>
+											<input class="form-control" placeholder="">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Correo Electronico Principal:</label>
+											<input class="form-control" placeholder="">
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Correo Electronico Opcional:</label>
+											<input class="form-control" placeholder="">
+                                 </div>                           
+                            </div>
+                    </form>
+                        </div>
+                    </div>
+
+      </div>
+                    </div>
+{% endblock %}

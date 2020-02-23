@@ -1,0 +1,531 @@
+{% extends "library/base.html" %}
+{% block div_content %}
+<form id="formNuevaRequisicion" role="form" action="/recruitmen/requisition/new/" method="post">
+            <!-- /.row -->
+            <div class="row">
+                        <div class="panel-heading">
+                            REQUISICION DE PERSONAL
+                        </div>
+                <div class="col-lg-12">
+                
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Datos del Solicitante
+                        </div>
+                        <div class="panel-body">
+                        {% csrf_token %}
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Nombre:</label>
+                                            <select id="requisition_requested_by" name="requisition_requested_by" class="form-control">
+                                            {% for employee in EmployeeList %}
+                                                <option id="employee{{ forloop.counter }}" value="{{ employee.id }}">{{ employee.name}} {{ employee.first_name}} {{ employee.second_name}}</option>
+                                            {% endfor %}>
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Puesto:</label>
+                                            <select id="position" name="position" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.id }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>                           
+                            </div>
+                            <div class="row">
+	                            <div class="col-lg-12">
+	                                    <div class="form-group">
+                                            <label>Empresa:</label>
+                                            {% for customerCompany in CustomerCompanyList %}
+                                            	<label class="radio-inline">
+                                                	<input id="customerCompany{{ forloop.counter }}" name="company_destination" value="{{ customerCompany.id }}"  type="radio" required>{{ customerCompany.comercial_name }}
+                                            	</label>
+                                            {% endfor %}
+                                        </div>
+	                            </div>
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                            <label>Area:</label>
+                                            <select id="work_area" name="work_area" class="form-control">
+                                            {% for workArea in WorkAreaList %}
+                                                <option id="workArea{{ forloop.counter }}" value="{{ workArea.id }}">{{ workArea.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                </div>
+                            	<div class="col-lg-6">
+                                            <label>Centro de Costos:</label>
+                                            <select id="cost_center" name="cost_center" class="form-control">
+                                            {% for costCenter in CostCenterList %}
+                                                <option id="costCenter{{ forloop.counter }}" value="{{ costCenter.id }}">{{ costCenter.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>
+                                 </div>                           
+                            <div class="row">
+                            	 <div class="col-lg-6">
+                                            <label>Ubicacion:</label>
+                                            <select id="physical_location" name="physical_location" class="form-control">
+                                            {% for physicalLocation in PhysicalLocationList %}
+                                                <option id="physicalLocation{{ forloop.counter }}" value="{{ physicalLocation.id }}">{{ physicalLocation.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>
+                                 <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Extencion:</label>
+                                            <input id="company_extencion_phone" name="company_extencion_phone" class="form-control">
+                                        </div>
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Puesto del Jefe Inmediato:</label>
+                                            <select id="immediate_boss_position" name="immediate_boss_position" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.id }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select>
+                            		</div> 
+                            	</div> 
+	                            <div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Nombre del Jefe Inmediato:</label>
+                                            <select id="immediate_boss" name="immediate_boss" class="form-control">
+                                            {% for employee in EmployeeList %}
+                                                <option id="employee{{ forloop.counter }}" value="{{ employee.id }}">{{ employee.name}} {{ employee.first_name}} {{ employee.second_name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                            		</div>
+	                            </div>
+                            </div>
+                                                                               
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            	 	<label>Direccion a la que pertenece:</label>
+                                            <select id="immediate_boss_direccion" name="immediate_boss_direccion" class="form-control">
+                                            {% for workArea in WorkAreaList %}
+                                                <option id="workArea{{ forloop.counter }}" value="{{ workArea.id }}">{{ workArea.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>
+                                 <div class="col-lg-6">
+                                 </div>                           
+                            </div>
+                            
+                            <div class="row">
+                            </div>
+                                                        
+                            <!-- /.row (nested) -->
+                            <div>
+                        </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    </div>
+
+                    </div>
+                    
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Perfil de la Vacante
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Puesto Solicitado:</label>
+                                            	<select id="position_to_search" name="position_to_search" class="form-control">
+                                            	{% for position in PositionList %}
+                                                	<option id="position{{ forloop.counter }}" value="{{ position.id }}">{{ position.name}}</option>
+                                            	{% endfor %}
+                                            </select>
+                                        </div>
+                                 </div>
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Cantidad de posiciones solicitadas:</label>
+                                            <input id="requested_amount" name="requested_amount" class="form-control" title="Ingrese solo numeros" pattern="[0-9]" required>
+                                        </div>
+                                 </div>
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+	                                    <div class="form-group">
+                                            <label>Educacion:</label>
+                                            {% for educationLevel in EducationLevelList %}
+                                            	<label class="radio-inline">
+                                                	<input id="educationLevel{{ forloop.counter }}" name="education_level" value="{{ educationLevel.id }}" type="radio" required>{{ educationLevel.description }}
+                                            	</label>
+                                            {% endfor %}
+                                        </div>
+                                 </div>                
+                            </div>
+				<div class="row">
+                            	<div class="col-lg-6">
+                            		<label>Posibles Carreras:</label>
+                                    <div class="form-group">
+                                            <label>Area de Conocimiento:</label>
+                                            <select class="form-control">
+                                                	<option id="Logistica" value="Logistica">Logistica</option>
+                                                	<option id="Computacion" value="Computacion">Computacion}</option>
+                                                	<option id="Administracion" value="Administracion">Administracion</option>
+                                            </select>
+                                    </div>
+                                </div>
+								<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Carrera</label>
+                                            <select id="possible_degree" name="possible_degree" multiple class="form-control" required>
+												{% for degree in DegreeList %}
+                                                	<option id="degree{{ forloop.counter }}" value="{{ degree.id }}">{{ degree.name}}</option>
+                                            	{% endfor %}
+                                            </select>
+                                        </div>
+                                </div>     
+                    </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Idiomas y Nivel:</label>
+                                            <select id="language_level" name="language_level" multiple class="form-control" required>
+                                            {% for LanguageLevelLanguage in LanguageLevelLanguageList %}
+                                                <option id="LanguageLevelLanguage{{ forloop.counter }}" value="{{ LanguageLevelLanguage.id }}">{{ LanguageLevelLanguage.name}}</option>
+                                            {% endfor %}
+                                            </select>
+                                     </div>
+                                 </div>      
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Otro Cual?:</label>
+                                            <input class="form-control">
+                                        </div>   
+                                 </div>                    
+                            </div>    
+                            <div class="row">
+                            	<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Experiencia profesional</label>
+                                            <textarea id="description_experience" name="description_experience" class="form-control" rows="3" required></textarea>
+                                        </div>  
+                            	</div>            
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Tiempo de Experiencia:</label>
+                                            <input id="years_experience" name="years_experience" class="form-control" title="Ingrese solo numeros" pattern="[0-9]" required>
+                                        </div>
+                            	</div> 
+	                            <div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Industria Especifica:</label>
+                                            <select id="industry_experience" name="industry_experience" multiple class="form-control" required>
+                                            {% for industryExperience in IndustryExperienceList %}
+                                                <option id="industryExperience{{ forloop.counter }}" value="{{ industryExperience.id }}">{{ industryExperience.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                            		</div>
+	                            </div>
+                            </div>
+                           <div class="row">
+                            	<div class="col-lg-12">
+                            	 <div class="form-group">
+                            	 	<label>Conocimientos y Habilidades Requeridas:</label>
+                            	 </div>
+                                </div>            
+                           </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Conocimientos:</label>
+                                            <select id="knowledge" name="knowledge" multiple class="form-control" required>
+                                            {% for Knowledge in KnowledgeList %}
+                                                <option id="Knowledge{{ forloop.counter }}" value="{{ Knowledge.id }}">{{ Knowledge.description}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </div> 
+                                 </div> 
+                                 <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Habilidades:</label>
+                                            <select id="ability" name="ability" multiple class="form-control" required>
+                                            {% for Ability in AbilityList %}
+                                                <option id="Ability{{ forloop.counter }}" value="{{ Ability.id }}">{{ Ability.description}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </div> 
+                                 </div>            
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Priorizar Conocimientos</label>
+                                            <select id="prioritize_knowledge" name="prioritize_knowledge" multiple class="form-control" required>
+                                            {% for Knowledge in KnowledgeList %}
+                                                <option id="Knowledge{{ forloop.counter }}" value="{{ Knowledge.id }}">{{ Knowledge.description}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </div>  
+                            	</div>            
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Sueldo:</label>
+                                            <input id="position_salary" name="position_salary" class="form-control" required>
+                                        </div>
+                            	</div>
+                            	<div class="col-lg-6">
+	                                    <div class="form-group">
+                                            <label>Tipo de Sueldo:</label>
+                                            <br/>
+                                            <label class="radio-inline">
+                                                <input id="id_Neto" name="position_salary_total" value="False" type="radio" required>Neto
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="id_Bruto" name="position_salary_total" value="True" type="radio" required>Bruto
+                                            </label>
+                                        </div>
+                            	</div>  
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+	                                    <div class="form-group">
+                                            <label>Genero:</label>
+                                            <br/>
+                                            {% for preferredGender in PreferredGenderList %}
+                                            <label class="radio-inline">
+                                                <input id="preferredGender{{ forloop.counter }}" name="preferred_gender" value="{{ preferredGender.id }}" type="radio" required>{{ preferredGender.name}}
+                                            </label>
+                                            {% endfor %}
+                                        </div>
+                            	</div>
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Horario de Trabajo:</label>
+                                            <select id="working_hours_profile" name="working_hours_profile" class="form-control">
+                                            {% for workingHours in WorkingHoursList %}
+                                                <option id="workingHours{{ forloop.counter }}" value="{{ workingHours.id }}">{{ workingHours.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                            		</div>
+                            	</div> 
+	                            <div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Ubicacion:</label>
+                                            <select id="location" name="location" class="form-control">
+                                            {% for physicalLocation in PhysicalLocationList %}
+                                                <option id="physicalLocation{{ forloop.counter }}" value="{{ physicalLocation.id }}">{{ physicalLocation.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                            		</div>
+	                            </div>
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Rango de edad preferido:</label>
+                                            <select id="age_range" name="age_range" class="form-control">
+                                            {% for ageRange in AgeRangeList %}
+                                                <option id="ageRange{{ forloop.counter }}" value="{{ ageRange.id }}">{{ ageRange.edad_inicial}} a {{ ageRange.edad_final}}</option>
+                                            {% endfor %}
+                                            <option id="id_Indistinto" value="Indistinto">Indistinto</option>
+                                            </select> 
+                            		</div>
+                            	</div> 
+	                            <div class="col-lg-6">
+                            		<div class="form-group">
+                                            <label>Empresa que contrata:</label>
+                                            <select id="profile_company_contractor" name="profile_company_contractor" class="form-control">
+                                            	{% for customerCompany in CustomerCompanyList %}
+                                            	<label class="checkbox-inline">
+                                                	<option id="customerCompany{{ forloop.counter }}" value="{{ customerCompany.id }}">{{ customerCompany.comercial_name }}</option>
+                                            	</label>
+                                            	{% endfor %}
+                                            </select> 
+                            		</div>
+	                            </div>
+                            </div>
+                                 
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Especificaciones y Responsabilidades
+                        </div>
+                        
+                     <br/>   
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            CLIENTE
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Persona que entrevistara a los candidatos:</label>
+                                            <select id="employee_tracing" name="employee_tracing" class="form-control">
+                                            {% for employee in EmployeeList %}
+                                                <option id="employee{{ forloop.counter }}" value="{{ employee.id }}">{{ employee.name}} {{ employee.first_name}} {{ employee.second_name}}</option>
+                                            {% endfor %}>
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Puesto:</label>
+                                            <select id="position_emp" name="position_emp" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position_emp{{ forloop.counter }}" value="{{ position.name }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Ubicacion:</label>
+                                            <select id="location_emp" name="location_emp" class="form-control">
+                                            {% for physicalLocation in PhysicalLocationList %}
+                                                <option id="physicalLocation{{ forloop.counter }}" value="{{ physicalLocation.name }}">{{ physicalLocation.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Extencion:</label>
+											<input id="company_extencion_phone_emp" name="company_extencion_phone_emp" class="form-control">
+                                 </div>                           
+                            </div>
+                 	   </div>
+                    </div>
+                        
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            CAT
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Persona que le atendera hasta la seleccion del candidato a cubrir la vacante:</label>
+                                            <select id="manager_tracing" name="manager_tracing" class="form-control">
+                                            {% for employee in EmployeeList %}
+                                                <option id="employee{{ forloop.counter }}" value="{{ employee.id }}">{{ employee.name}} {{ employee.first_name}} {{ employee.second_name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Puesto:</label>
+                                            <select id="position_seg" name="position_seg" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.name }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Ubicacion:</label>
+                                            <select id="location_seg" name="location_seg" class="form-control">
+                                            {% for physicalLocation in PhysicalLocationList %}
+                                                <option id="physicalLocation{{ forloop.counter }}" value="{{ physicalLocation.name }}">{{ physicalLocation.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Extencion:</label>
+											<input id="company_extencion_phone_seg" name="company_extencion_phone_seg" class="form-control">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                                 <div class="col-lg-6">
+                                            <label>Fecha de inicio de busqueda:</label>
+											<input type="date" id="search_start_date" name="search_start_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>      
+                                 <div class="col-lg-6">
+                                            <label>Fecha compromiso entrega candidatos:</label>
+											<input type="date" id="commitment_date" name="commitment_date" class="form-control" placeholder="DD/MM/YYYY" required>
+                                 </div>                           
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            RH NEGOCIO
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Persona responsable de confirmar busqueda, liberar posicion y ofertar al candidato:</label>
+                                            <select id="hr_process_tracing" name="hr_process_tracing" class="form-control">
+                                            {% for employee in EmployeeList %}
+                                                <option id="employee{{ forloop.counter }}" value="{{ employee.id }}">{{ employee.name}} {{ employee.first_name}} {{ employee.second_name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Puesto:</label>
+                                            <select id="position_hr" name="position_hr" class="form-control">
+                                            {% for position in PositionList %}
+                                                <option id="position{{ forloop.counter }}" value="{{ position.name }}">{{ position.name}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Ubicacion:</label>
+                                            <select id="location_hr" name="location_hr" class="form-control">
+                                            {% for physicalLocation in PhysicalLocationList %}
+                                                <option id="physicalLocation{{ forloop.counter }}" value="{{ physicalLocation.name }}">{{ physicalLocation.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>
+                                 <div class="col-lg-6">
+                                            <label>Extencion:</label>
+											<input id="company_extencion_phone_hr" name="company_extencion_phone_hr" class="form-control">
+                                 </div>                           
+                            </div>
+                            <div class="row">
+                            	<div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Responsable de realizar la contratacion de personal: </label>
+                                            <select id="hr_contractor_area" name="hr_contractor_area" class="form-control">
+                                            {% for workArea in WorkAreaList %}
+                                                <option id="workArea{{ forloop.counter }}" value="{{ workArea.id }}">{{ workArea.description}}</option>
+                                            {% endfor %}
+                                            </select> 
+                                        </div>
+                                 </div>                   
+                            </div>
+                    	</div>
+                    </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-lg-6">
+                    			<button type="submit" class="btn btn-primary" id="GuardarReq" >Guardar cambios</button>
+                    			<br/>
+                            </div>
+                     </div>
+                      <div class="row">
+                      	<br/>
+                      </div>       
+</form>
+{% endblock %}

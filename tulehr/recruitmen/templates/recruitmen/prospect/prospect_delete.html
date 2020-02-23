@@ -1,0 +1,114 @@
+{% extends "library/base.html" %}
+
+{% block div_content %}
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3>Instancias de su Nube Privada</h3>
+                
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                        	<h2>Busqueda de Requisiciones</h2>
+                            <button type="submit" class="btn btn-primary" onclick="location.href='/security/resource/compute/new/';" >Nueva Instancia</button>
+                            <button type="button" class="btn btn-primary">Buscar Requisicion</button>	
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <button type="submit" class="btn btn-primary" onclick="location.href='/recruitmen/requisition/list/';" >Nueva Requisicion</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                            <p>La siguiente tabla muestra todas las requisiciones dadas de alta, puedes utilizar el filtro de la parte superior para buscar una requisicion en especifico.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                            	Seleccionar
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                            <th>
+                                                Puesto Solicitado
+                                            </th>
+                                            <th>
+                                                Solicitante
+                                            </th>
+                                            <th>
+                                                Empresa
+                                            </th>
+                                            <th>
+                                                Area
+                                            </th>
+                                            <th>
+                                                Estatus
+                                            </th>
+                                            <th>
+                                                Fecha de Alta
+                                            </th>
+                                            <th>
+                                                Actualizar
+                                            </th>
+                                            <th>
+                                                Cancelar
+                                            </th>
+                                            <th>
+                                                Seguimiento
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{% if requisition_list %}
+									    {% for requisition in requisition_list %}
+									    	<tr>
+                                            <td><input type="checkbox" id="{{ compute_instance.instance_id }}" name="name_instance_{{ compute_instance.instance_id }}" > </td>
+                                            <td>{{ requisition.name }}</td>
+                                            <td>{{ requisition.key_name }}</td>
+                                            <td>{{ requisition.instance_type }}</td>
+                                            <td>{{ requisition.state }}</td>
+                                            <td>{{ requisition.monitoring }}</td>
+                                            <td>{{ requisition.platform }}</td>
+                                            <td>{{ requisition.private_dns_name }}</td>
+                                            <td><a href="/recruitmen/requisition/update/" >Actualizar</a></td>
+                                            <td><a href="/recruitmen/requisition/cancel/" >Cancelar</a></td>
+                                            <td><a href="/recruitmen/requisition/timeline/" >Seguimiento</a></td>
+                                            </tr>
+										    {% endfor %}
+										{% else %}
+										    <tr>
+                                            <td>NA</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+										    </tr>
+									{% endif %}
+				                  </tbody>
+                                </table>
+                            </div>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+{% endblock %}

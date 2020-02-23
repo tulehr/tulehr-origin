@@ -1,0 +1,231 @@
+{% extends "library/base.html" %}
+
+{% block div_content %}
+            <!-- /.row -->
+
+
+            <!-- /.row -->
+            <div class="row">                    
+
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> Linea de Tiempo de la Requisicion  
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Creacion de Requisicion</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> Hace 11 horas via sistema</small></p>
+                                            <p><small class="text-muted"><i class="fa fa-thumbs-o-up"></i> Estatus: Realizado</small></p>
+                                            <p><small class="text-muted"><i class="fa fa-user"></i> Responsable: Arturo Vargas</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p> Fernando Perez realiza la requisicion no. 54 solicitando un Director de telecomunicaciones.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="/recruitmen/requisition/update/">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="/recruitmen/requisition/view/">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Autorizacion de Requisicion</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 10 horas via sistema</small>
+                                            <p><small class="text-muted"><i class="fa fa-thumbs-o-up"></i> Estatus: Pendiente</small></p>
+                                            <p><small class="text-muted"><i class="fa fa-user"></i> Responsable: Arturo Vargas</small></p>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>El Area de Recursos Humanos autoriza la Requisicion .</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info">
+                                    	<i class="fa fa-search "></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">En investigacion</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 9 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Se inicia el proceso de investigacion</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge danger">
+                                    	<i class="fa fa-user "></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Seleccion de Candidatos</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 9 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Se realiza la seleccion de candidatos para realizar el filtro</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-calendar"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Agendar Entrevistas</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 8 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Se agendan las entrevistas con los gerentes para el candidato.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-thumbs-o-up"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Seleccion de la Terna</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 7 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Se aplican evaluaciones a los candidatos y se realiza la seleccion de la terna para ser enviada al cliente.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-calendar"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Presentacion de candidatos con el cliente</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 6 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Se presentan a los candidatos con los comentarios del gerente y las evaluaciones.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-send"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Envio de Oferta Economica</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> hace 5 horas via sistema</small></p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Configuracion de la oferta economica para el proceso de contratacion.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Actualizar</a>
+                                                    </li>
+                                                    <li><a href="#">Ver Detalles</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+{% endblock %}
